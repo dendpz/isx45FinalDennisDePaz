@@ -45,6 +45,5 @@ app.listen(process.env.PORT || 3000, () => {
 
 // Homescreen "/"
 app.get("/", (req, res) => {
-  //res.send("Root resource - Up and running!")
   res.render("index");
 });
