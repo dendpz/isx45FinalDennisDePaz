@@ -1,0 +1,41 @@
+<%- include("_header") -%>
+<!-- User imports file, though I cannot display the import results. Basic functionality works, though.-->
+
+<br>
+<h1>Import E-Vehicles</h1>
+<p>Total number of electric vehicles in the database: <%= totRecs %> </p>
+<p>Select a file with electric vehicles for Database Insert</p>
+
+<form>
+    <input type="file" name="filename" required><p></p>
+    <input type="submit" value="Import E-Vehicles">
+</form>
+<p id="result"></p>
+
+<script>
+    document.querySelector("form").addEventListener("submit", e => {
+      // Cancel default behavior of sending a synchronous POST request
+      e.preventDefault();
+      // Create a FormData object, passing the form as a parameter
+      const formData = new FormData(e.target);
+      // Send form data to the server with an asynchronous POST request
+      fetch("/import", {
+        method: "POST",
+        body: formData
+      })
+        .then(response => response.text())
+        .then(data => {
+            const resultElement = document.getElementById("result");
+            if (data.substring(0,5) === "Error") {
+                resultElement.innerText = `Error occurred!  ${data}`
+            } else {
+                resultElement.innerText = data;
+            };
+        })
+        .catch(err => {
+            document.getElementById("message").textContent = `Error: ${err.message}`;
+        });
+    });
+    </script>
+
+<%- include("_footer") -%>

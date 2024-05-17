@@ -1,0 +1,45 @@
+<%- include("_header") -%>
+
+<br>
+<h2>Calculate Sum of a Series Divisible by a Number</h2>
+
+<p>Description:</p>
+<p>The program will calculate the sum of numbers beginning at the starting number and ending at the ending number that are divisible by the given number.</p>
+<p>Example:</p>
+<p>Starting Number = 1.</p>
+<p>Ending Number = 13.</p>
+<p>Divisible by = 3.</p>
+<p>The sum is 30 (3+6+9+12).</p>
+<br>
+
+<form action="/sseries" method="POST">
+    <table>
+        <tr>
+            <td><label for="snum">Enter Starting Number </label>: </td>
+            <td><input type="number" name="snum" id="snum" required/></td>
+            <td>(required)</td>
+        </tr>
+        <tr>
+            <td><label for="enum">Enter Ending Number </label>: </td>
+            <td><input type="number" name="enum" id="enum" required /></td>
+            <td>(required)</td>
+        </tr>
+        <tr>
+            <td><label for="divby">Divisible by</label>: </td>
+            <td><input type="number" name="divby" id="divby" required /></td>
+            <td>(required)</td>
+        </tr>
+        <tr>
+            <td span="2">
+                <br>
+                <input type="submit" value="Calculate Sum" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+<% if (type === "post") { %>
+    <% 
+} %>
+
+<%- include("_footer") -%>
